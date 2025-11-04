@@ -79,3 +79,22 @@ document.querySelectorAll('.skill-card, .project-card').forEach(card => {
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
 });
+
+// Fade-in animation for sections on scroll
+const sectionObserverOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+        }
+    });
+}, sectionObserverOptions);
+
+// Observe all sections except home (which should be visible immediately)
+document.querySelectorAll('section:not(#home)').forEach(section => {
+    sectionObserver.observe(section);
+});
