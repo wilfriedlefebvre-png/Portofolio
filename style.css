@@ -351,6 +351,19 @@ section.fade-in {
     color: var(--text-light);
     margin: 0;
     max-width: 28ch;
+    opacity: 0;
+    transform: translateY(10px);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease, margin-top 0.35s ease;
+}
+
+.project-card:hover p,
+.project-card:focus-within p {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 200px;
+    margin-top: 0.5rem;
 }
 
 .project-tags {
