@@ -72,8 +72,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe skill cards and project cards
-document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+// Observe project cards (skills stay static)
+document.querySelectorAll('.project-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
