@@ -100,46 +100,26 @@ document.querySelectorAll('section:not(#home)').forEach(section => {
     sectionObserver.observe(section);
 });
 
-// Unforgettable About Me reveal
-const aboutContainer = document.querySelector('.about-text-3d');
-const aboutParagraphs = document.querySelectorAll('.about-text-3d p');
+// About section professional reveal
+const aboutReveal = document.querySelector('.about-reveal');
 
-if (aboutContainer && aboutParagraphs.length) {
-    aboutParagraphs.forEach((paragraph, paragraphIndex) => {
-        const words = paragraph.textContent.trim().split(/\s+/);
-        paragraph.innerHTML = '';
+if (aboutReveal) {
+    const aboutLines = aboutReveal.querySelectorAll('p');
 
-        words.forEach((word, wordIndex) => {
-            const span = document.createElement('span');
-            span.className = 'about-word';
-            span.textContent = word;
-
-            const staggerDelay = (wordIndex * 0.12) + (paragraphIndex * 0.9);
-            const randomTilt = (Math.random() * 30 - 15).toFixed(2);
-            const randomSkew = (Math.random() * 10 - 5).toFixed(2);
-
-            span.style.setProperty('--word-delay', `${staggerDelay.toFixed(2)}s`);
-            span.style.setProperty('--word-tilt', `${randomTilt}deg`);
-            span.style.setProperty('--word-skew', `${randomSkew}deg`);
-
-            paragraph.appendChild(span);
-
-            if (wordIndex !== words.length - 1) {
-                paragraph.appendChild(document.createTextNode(' '));
-            }
-        });
+    aboutLines.forEach((line, index) => {
+        line.style.setProperty('--line-delay', `${(index * 0.2).toFixed(2)}s`);
     });
 
-    const aboutRevealObserver = new IntersectionObserver((entries, obs) => {
+    const aboutObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('about-ignite');
+                aboutReveal.classList.add('is-active');
                 obs.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.45
+        threshold: 0.4
     });
 
-    aboutRevealObserver.observe(aboutContainer);
+    aboutObserver.observe(aboutReveal);
 }
