@@ -93,11 +93,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 100%), url('9dc82599-34c2-4712-b940-d8cb87a37073.png');
-    /* gradient should cover; image should fit entirely (no crop) */
-    background-size: cover, contain;
-    background-position: center, center;
-    background-repeat: no-repeat, no-repeat;
+    background-image:
+        linear-gradient(135deg, rgba(15, 22, 35, 0.65) 0%, rgba(12, 18, 32, 0.45) 100%),
+        url("top background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--white);
     text-align: center;
     padding-top: 80px;
